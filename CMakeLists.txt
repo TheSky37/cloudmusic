@@ -17,6 +17,8 @@ qt_add_qml_module(appmusic_player
     QML_FILES main.qml
     RESOURCES README.md
     SOURCES framelesswindow.h framelesswindow.cpp
+    QML_FILES ../music_player_demo/PageFindMusic.qml
+    QML_FILES PageFindMusic.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
