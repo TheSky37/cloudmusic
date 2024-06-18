@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "framelesswindow.h"
 
 int main(int argc, char *argv[])
 {
@@ -7,6 +8,9 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     const QUrl url(u"qrc:/music_player/main.qml"_qs);
+
+    qmlRegisterType<FramelessWindow>("qc.window", 1, 0, "FramelessWindow");
+
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreated,
