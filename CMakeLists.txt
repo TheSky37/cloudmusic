@@ -39,6 +39,8 @@ qt_add_qml_module(
   RESOURCES
   QML_FILES RoundImage.qml
   QML_FILES PageFindMusic.qml
+  QML_FILES FindMusicNewMusicContent.qml
+  QML_FILES FindMusicPlayListContent.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1. If
