@@ -32,6 +32,13 @@ qt_add_qml_module(
   framelesswindow.cpp
   RESOURCES
   RESOURCES image.qrc
+  QML_FILES TitleBar.qml
+  QML_FILES LeftBar.qml
+  QML_FILES RightContent.qml
+  QML_FILES BottomBar.qml
+  RESOURCES
+  QML_FILES RoundImage.qml
+  QML_FILES PageFindMusic.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1. If
