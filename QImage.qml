@@ -1,5 +1,14 @@
-import QtQuick 2.15
+import QtQuick
+import Qt5Compat.GraphicalEffects
 
-Item {
+Image {
+    id: img
+    property string color: ""
+    source: ""
 
+    ColorOverlay {
+        anchors.fill: parent
+        source: img
+        color: parent.color
+    }
 }
