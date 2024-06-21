@@ -7,13 +7,12 @@ project(
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_AUTORCC ON)
 
 find_package(
   Qt6 6.2
   COMPONENTS Quick
   REQUIRED)
-
-set(CMAKE_AUTORCC on)
 
 qt_add_executable(appmusic_player main.cpp)
 
@@ -25,30 +24,26 @@ qt_add_qml_module(
   1.0
   QML_FILES
   main.qml
+  TitleBar.qml
+  LeftBar.qml
+  RightContent.qml
+  BottomBar.qml
+  RoundImage.qml
+  PageFindMusic.qml
+  FindMusicNewMusicContent.qml
+  FindMusicPlayListContent.qml
   RESOURCES
-  README.md
-  SOURCES
-  framelesswindow.h
-  framelesswindow.cpp
-  RESOURCES
-  RESOURCES image.qrc
-  QML_FILES TitleBar.qml
-  QML_FILES LeftBar.qml
-  QML_FILES RightContent.qml
-  QML_FILES BottomBar.qml
-  RESOURCES
-  QML_FILES RoundImage.qml
-  QML_FILES PageFindMusic.qml
-  QML_FILES FindMusicNewMusicContent.qml
-  QML_FILES FindMusicPlayListContent.qml
-)
+  image.qrc
+  SOURCES framelesswindow.cpp framelesswindow.h
+  QML_FILES QImage.qml
+  QML_FILES ToolTipButton.qml)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1. If
 # you are developing for iOS or macOS you should consider setting an explicit,
 # fixed bundle identifier manually though.
 set_target_properties(
   appmusic_player
-  PROPERTIES # MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appmusic_player
+  PROPERTIES MACOSX_BUNDLE_GUI_IDENTIFIER com.example.music_player
              MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
              MACOSX_BUNDLE_SHORT_VERSION_STRING
              ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}

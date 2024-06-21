@@ -1,5 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>source/icon.png</file>
+        <file>source/icon1.png</file>
+        <file>source/icon2.png</file>
+        <file>source/icon3.png</file>
+        <file>source/icon4.png</file>
+        <file>source/icon5.png</file>
+        <file>source/icon6.png</file>
+        <file>source/icon7.png</file>
     </qresource>
 </RCC>
