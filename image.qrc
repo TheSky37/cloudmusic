@@ -8,5 +8,8 @@
         <file>source/icon5.png</file>
         <file>source/icon6.png</file>
         <file>source/icon7.png</file>
+        <file>source/musicIcon.jpg</file>
+        <file>source/loop.png</file>
+        <file>source/loop1.png</file>
     </qresource>
 </RCC>

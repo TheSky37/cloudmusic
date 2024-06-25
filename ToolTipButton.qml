@@ -1,33 +1,46 @@
 import QtQuick
+import QtQuick.Controls
 
-MouseArea {
-
+Item {
     property string color: ""
     property string iconColor: ""
     property string hoverdColor: ""
     property string source: ""
     property bool isHoverd: false
+
     width: 30
     height: width
     hoverEnabled: true
+
     Rectangle {
         anchors.fill: parent
         radius: 100
-        color: if(parent.isHoverd) return hoverdColor
-        else return parent.color
+        color: parent.isHoverd ? "#e8e9ec" : "#f5f5f7"
     }
-    QImage {
-        width: parent.width *.5
-        height: width
+
+    Image {
+        width: parent.width * .7
+        height: parent.height * .7
         anchors.centerIn: parent
         source: parent.source
-        sourceSize: Qt.size(32,32)
-        color: parent.iconColor
+        sourceSize: Qt.size(32, 32)
     }
-    onEntered: {
-        isHoverd = true
+
+    HoverHandler {
+        id: hoverHandler
+        cursorShape: Qt.PointingHandCursor
+        onHoveredChanged: {
+            parent.isHoverd = hovered
+        }
     }
-    onExited: {
-        isHoverd = false
+
+    TapHandler {
+        onTapped: {
+            console
+            {
+
+            }
+        }
     }
 }
+

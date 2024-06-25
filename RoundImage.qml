@@ -4,7 +4,7 @@ import Qt5Compat.GraphicalEffects
 Item {
     property alias fillMode:img.fillMode
     property string source: ""
-    property double radius: 10
+    property double radius: 15
     Image {
         id: img
         anchors.fill: parent

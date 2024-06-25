@@ -92,16 +92,24 @@ Rectangle {
         id: listViewDelegate
         Rectangle {
             property bool isHovered: false
+            property bool isThisBtn: leftBar.thisBtnText === btnText                         //当前按钮是否被选中
             width: leftBarFlickable.width
             height: leftBar.btnHeight
             color: isHovered ? "#e8e9ec" : "#f5f5f7"
 
+            Rectangle{
+                width: parent.isThisBtn ? parent.width : 0
+                height: parent.height
+                color: isThisBtn ? "#e8e9ec" : "#f5f5f7"
+            }
+
             Row {
                 anchors.fill: parent
-                spacing: 10 // 设置图标和文本之间的间距
+                spacing: 7
                 anchors.verticalCenter: parent.verticalCenter
 
                 Image {
+                    anchors.verticalCenter: parent.verticalCenter
                     width: 20
                     height: width
                     source: model.btnIcon
@@ -109,15 +117,19 @@ Rectangle {
                 }
 
                 Text {
+                    font.bold: isThisBtn ? true : false
+                    anchors.verticalCenter: parent.verticalCenter
                     font.pointSize: leftBar.fontSize
                     text: model.btnText
-                    color: "#7f7f7f" // 设置较浅的颜色
+                    color: "#7f7f7f"
                 }
             }
 
             TapHandler {
                 onTapped: {
-                    parent.color = "#e8e9ec"
+                    // parent.color =
+                    leftBar.thisBtnText = btnText
+                    leftBar.thisQml = qml
                 }
             }
 
