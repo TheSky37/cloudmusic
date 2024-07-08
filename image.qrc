@@ -11,5 +11,7 @@
         <file>source/musicIcon.jpg</file>
         <file>source/loop.png</file>
         <file>source/loop1.png</file>
+        <file>source/Previous.png</file>
+        <file>source/play.png</file>
     </qresource>
 </RCC>

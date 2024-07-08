@@ -9,6 +9,7 @@ class FramelessWindow : public QQuickWindow
         MousePosition mouse_pos READ getMouse_pos WRITE setMouse_pos NOTIFY mouse_posChanged FINAL)
 
 public:
+    //枚举类型定义鼠标距离边框的位置
     enum MousePosition {
         TOPLEFT = 1,
         TOP,

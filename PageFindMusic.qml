@@ -4,9 +4,9 @@ Flickable {
     id: findMusicFlickable
     property var thisTheme: p_theme.defaultTheme[p_theme.current]
     property var headerData: [{headerText:"歌单",qml:"FindMusicPlayListContent.qml"},
-    {headerText:"最新音乐",qml:"FindMusicNewMusicContent.qml"},
-    {headerText:"个性推荐",qml:""},
-    {headerText:"专属定制",qml:""},]
+        {headerText:"最新音乐",qml:"FindMusicNewMusicContent.qml"},
+        {headerText:"个性推荐",qml:""},
+        {headerText:"专属定制",qml:""},]
     property double fontSize: 11
     anchors.fill: parent
 
@@ -51,8 +51,8 @@ Flickable {
                 height: children[0].contentHeight + findMusicHeader.topBottomPadding
                 radius: width/2
                 color: if(findMusicHeader.current === index) return "#2F" + thisTheme.subBackgroundColor
-                else if(isHoverd) return "#1F" + thisTheme.subBackgroundColor
-                else return "#00000000"
+                       else if(isHoverd) return "#1F" + thisTheme.subBackgroundColor
+                       else return "#00000000"
                 Text {
                     anchors.centerIn: parent
                     font.pointSize: findMusicFlickable.fontSize
@@ -60,23 +60,33 @@ Flickable {
                     text:  headerText
                     color: thisTheme.fontColor
                 }
-                MouseArea {
-                    anchors.fill: parent
+
+                Text {
+                    anchors.centerIn: parent
+                    font.pointSize: findMusicFlickable.fontSize
+                    font.bold: findMusicHeader.current === index
+                    text: headerText
+                    color: thisTheme.fontColor
+                }
+
+                HoverHandler {
+                    id: hoverHandler
                     cursorShape: Qt.PointingHandCursor
-                    hoverEnabled: true
-                    onClicked: {
+                    onHoveredChanged: {
+                        parent.isHovered = hovered
+                    }
+                }
+
+                TapHandler {
+                    onTapped: {
                         findMusicHeader.current = index
-                    }
-                    onEntered: {
-                        parent.isHoverd = true
-                    }
-                    onExited: {
-                        parent.isHoverd = false
                     }
                 }
             }
         }
     }
+
+
     Item{
         id:findMuiscContent
         width: parent.width*0.85

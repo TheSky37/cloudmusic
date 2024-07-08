@@ -1,45 +1,43 @@
 import QtQuick
-import QtQuick.Controls
 
 Item {
     property string color: ""
-    property string iconColor: ""
     property string hoverdColor: ""
     property string source: ""
-    property bool isHoverd: false
+    property bool isHovered: false
+    property string iconColor: ""
 
     width: 30
     height: width
-    hoverEnabled: true
 
     Rectangle {
         anchors.fill: parent
         radius: 100
-        color: parent.isHoverd ? "#e8e9ec" : "#f5f5f7"
+        color: if(parent.isHovered) return hoverdColor
+        else return parent.color
     }
 
-    Image {
-        width: parent.width * .7
-        height: parent.height * .7
-        anchors.centerIn: parent
+    QImage {
+        width: parent.width * .65
+        height: width
+        anchors.fill: parent
         source: parent.source
         sourceSize: Qt.size(32, 32)
+        color: parent.iconColor
     }
 
     HoverHandler {
         id: hoverHandler
         cursorShape: Qt.PointingHandCursor
         onHoveredChanged: {
-            parent.isHoverd = hovered
+            parent.isHovered = hovered
+            console("222")
         }
     }
 
     TapHandler {
         onTapped: {
-            console
-            {
-
-            }
+            console("111")
         }
     }
 }
