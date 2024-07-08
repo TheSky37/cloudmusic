@@ -2,43 +2,36 @@ import QtQuick
 
 Item {
     property string color: ""
+    property string iconColor: ""
     property string hoverdColor: ""
     property string source: ""
-    property bool isHovered: false
-    property string iconColor: ""
-
+    property bool isHoverd: false
     width: 30
     height: width
 
     Rectangle {
         anchors.fill: parent
         radius: 100
-        color: if(parent.isHovered) return hoverdColor
+        color: if(parent.isHoverd) return hoverdColor
         else return parent.color
-    }
-
+    }//用于绘制按钮的背景，具有圆角效果，并根据是否悬停改变颜色。
     QImage {
-        width: parent.width * .65
+        width: parent.width * .5
         height: width
-        anchors.fill: parent
+        anchors.centerIn: parent
         source: parent.source
-        sourceSize: Qt.size(32, 32)
+        sourceSize: Qt.size(32,32)
         color: parent.iconColor
     }
-
+//用于显示图标，并根据传入的颜色属性设置图标颜色。
     HoverHandler {
         id: hoverHandler
         cursorShape: Qt.PointingHandCursor
         onHoveredChanged: {
-            parent.isHovered = hovered
-            console("222")
+            isHoverd = hoverHandler.hovered
         }
-    }
-
-    TapHandler {
-        onTapped: {
-            console("111")
-        }
-    }
+    }//用于检测鼠标悬停事件，改变按钮的背景颜色。
 }
+
+
 
