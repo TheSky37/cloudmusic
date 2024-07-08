@@ -60,7 +60,7 @@ FramelessWindow {
                     height: parent.height
                 }
 
-                //有内容栏
+                //右内容栏
                 QCRightContent {
                     id: rightContent
                     width: parent.width - leftBar.width

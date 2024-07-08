@@ -29,7 +29,7 @@ qt_add_qml_module(
   RightContent.qml
   BottomBar.qml
   RoundImage.qml
-  PageFindMusic.qml
+
   FindMusicNewMusicContent.qml
   FindMusicPlayListContent.qml
   RESOURCES
