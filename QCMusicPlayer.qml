@@ -3,26 +3,27 @@ import QtMultimedia
 
 MediaPlayer {
     id: p_musicPlayer
-    enum PlayerMode {
+    enum PlayerMode {  //枚举循环类型
         ONELOOPPLAY = 0, // 单曲循环
         LOOPPLAY, // 列表循环
         RANDOMPLAY, // 随机播放
         PLAYLISTPLAY // 列表播放
     }
-    property int playerModeCount: 4
-    property int playerModeStatus: QCMusicPlayer.PlayerMode.LOOPPLAY
+    property int playerModeCount: 4        //播放模式的总数
+    property int playerModeStatus: QCMusicPlayer.PlayerMode.LOOPPLAY  //设置当前播放模式，默认为LOOPPLAY
     property double volume: 1.
     property double lastVolume: 1.
     audioOutput: AudioOutput {
         volume: p_musicPlayer.volume
     }
 
-    onPlaybackStateChanged: {
+    onPlaybackStateChanged: {//当 MediaPlayer 的播放状态发生改变时触发，如果播放结束 (StoppedState) 且播放位置等于总时长，则调用 autoNextMusicPlay 函数自动播放下一首
         if(playbackState === MediaPlayer.StoppedState && duration === position) {
             autoNextMusicPLay()
         }
     }
 
+    //切换播放模式
     function setPlayMode() {
         playerModeStatus = (playerModeStatus+1) % playerModeCount
     }
@@ -129,3 +130,4 @@ MediaPlayer {
         }
     }
 }
+

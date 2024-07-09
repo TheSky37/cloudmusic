@@ -4,6 +4,7 @@ import QtQuick.Controls 2.12
 Rectangle {
     id: leftBar
     property var thisTheme: p_theme.defaultTheme[p_theme.current]
+    //使用动态数组进行填充
     property var leftBarData: [{headerText:"",
             btnData:[{btnIcon:"qrc:/Images/discoverMusic.svg",btnText:"发现音乐",isActive:true,qml:"./qmlPage/PageFindMusic.qml"},
                 {btnIcon:"qrc:/Images/myAttention.svg",btnText:"关注",isActive:true,qml:""},
@@ -28,7 +29,7 @@ Rectangle {
     width: 200
     height: parent.height
     color: thisTheme.backgroundColor
-    function filterLeftBarData(leftBarData) { // 筛选需要显示的数据
+    function filterLeftBarData(leftBarData) { // filterLeftBarData函数用于筛选需要显示的数据
         let filteredData = leftBarData.map(item => {
             if (item.isActive) {
                 let filteredBtnData = item.btnData.filter(btn => btn.isActive);
@@ -38,7 +39,7 @@ Rectangle {
         }).filter(item => item !== null);
         return filteredData
     }
-    Flickable {
+    Flickable {                                //允许内容滚动
         id: leftBarFlickable
         anchors.fill: parent
         contentWidth: parent.width
@@ -88,7 +89,7 @@ Rectangle {
         Component {
             id: listViewDelegate
             Rectangle {
-                property bool isHoverd: false
+                property bool isHoverd: false                             //当前鼠标是否悬停在这
                 property bool isThisBtn: leftBar.thisBtnText === btnText  //当前按钮是否被选中
                 width: leftBarFlickable.width - 15
                 height: leftBar.btnHeight
@@ -116,7 +117,7 @@ Rectangle {
                     }
                 }
 
-                Row {
+                Row {                                           //排列侧边栏的图标和文字
                     spacing: 10
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.left: parent.left
@@ -142,42 +143,23 @@ Rectangle {
                     }
                 }
 
-				TapHandler {
-					id: tapHandler
-					onTapped: {
-						leftBar.thisBtnText = btnText
-						leftBar.thisQml = qml
-					}
-				}
+                TapHandler {
+                    id: tapHandler
+                    onTapped: {
+                        leftBar.thisBtnText = btnText
+                        leftBar.thisQml = qml
+                    }
+                }
 
-				HoverHandler {
-					id: hoverHandler
+                HoverHandler {
+                    id: hoverHandler
 
-					onHoveredChanged: {
-						parent.isHoverd = hoverHandler.hovered
-					}
-				}
-
-
-
-
-
-				// MouseArea {
-				//     anchors.fill: parent
-				//     cursorShape: Qt.PointingHandCursor
-				//     hoverEnabled: true
-				//     onClicked: {
-				//         leftBar.thisBtnText = btnText
-				//         leftBar.thisQml = qml
-				//     }
-				//     onEntered: {
-				//         parent.isHoverd = true
-				//     }
-				//     onExited: {
-				//          parent.isHoverd = false
-				//     }
-				// }
+                    onHoveredChanged: {
+                        parent.isHoverd = hoverHandler.hovered
+                    }
+                }
             }
         }
     }
 }
+

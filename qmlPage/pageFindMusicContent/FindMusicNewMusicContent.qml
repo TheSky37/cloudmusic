@@ -107,19 +107,7 @@ Item {
 					}
 				}
 
-				// MouseArea {
-				//     anchors.fill: parent
-				//     hoverEnabled: true
-				//     onClicked: {
-				//         newMusicContent.headerCurrent = index
-				//     }
-				//     onEntered: {
-				//         parent.isHoverd = true
-				//     }
-				//     onExited: {
-				//         parent.isHoverd = false
-				//     }
-				// }
+
 
 
 
@@ -253,32 +241,7 @@ Item {
 					}
 				}
 
-				// MouseArea {
-				//     anchors.fill: parent
-				//     hoverEnabled: true
-				//     onDoubleClicked: {
-				//         var musicInfo = {id: id,name: name,artists: artists,
-				//             album: album,coverImg: coverImg,url: "", allTime: allTime
-				//         }
-				//         p_musicPlayer.playMusic(id,musicInfo)
 
-				//         p_musicRes.thisPlayListInfo.clear()
-				//         for(var i = 0; i < contentModel.count;i++) {
-				//             p_musicRes.thisPlayListInfo.append(contentModel.get(i))
-				//         }
-				//         p_musicRes.thisPlayCurrent = index
-				//         p_musicRes.thisPlayListInfoChanged()
-				//     }
-				//     onClicked: {
-				//         newMusicContent.contentCurrent = index
-				//     }
-				//     onEntered: {
-				//         parent.isHoverd = true
-				//     }
-				//     onExited: {
-				//         parent.isHoverd = false
-				//     }
-				// }
             }
         }
     }

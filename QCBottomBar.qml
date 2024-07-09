@@ -20,7 +20,7 @@ Rectangle {
         activeFontColor: "#FF" + thisTheme.subBackgroundColor
         contentItemColor: "#1F" + thisTheme.subBackgroundColor
     }
-
+//用于显示播放列表的组件，当点击播放列表按钮时显示。
     Slider {
         id: bottomBarSlider
         property bool movePressed: false
@@ -66,7 +66,7 @@ Rectangle {
         }
     }
 
-
+//播放进度条，可以通过拖动来控制播放进度。
 
     Item {
         width: parent.width-15
@@ -83,20 +83,13 @@ Rectangle {
                 height: width
                 source: p_musicRes.thisPlayMusicInfo.coverImg
 
-				TapHandler {
-					id: tapHandler
-					onTapped: {
-						musicLyricPage.showPage()
-					}
-				}
+                TapHandler {
+                    id: tapHandler
+                    onTapped: {
+                        musicLyricPage.showPage()
+                    }
+                }
 
-				// MouseArea {
-				// 	anchors.fill: parent
-
-				// 	onClicked: {
-				// 		musicLyricPage.showPage()
-				// 	}
-				// }
             }
             Column {
                 width: parent.width - musicCoverImg.width - parent.spacing
@@ -131,31 +124,17 @@ Rectangle {
                         }
                     }
 
-					HoverHandler {
-						id: hoverHandler
+                    HoverHandler {
+                        id: hoverHandler
 
-						onHoveredChanged: {
-							if (hoverHandler.hovered && nameText.width < nameText.contentWidth) {
-								nameTextAni.lastText = nameText.text
-								nameText.text += "   " + nameText.text
-								nameTextAni.start()
-							}
-						}
-					}
-
-					// MouseArea {
-					//     anchors.fill: parent
-					//     cursorShape: Qt.PointingHandCursor
-					//     hoverEnabled: true
-					//     onEntered: {
-					//         if(nameText.width < nameText.contentWidth) {
-					//             nameTextAni.lastText = nameText.text
-					//             nameText.text += "   " + nameText.text
-					//             nameTextAni.start()
-					//         }
-					//     }
-					// }
-
+                        onHoveredChanged: {
+                            if (hoverHandler.hovered && nameText.width < nameText.contentWidth) {
+                                nameTextAni.lastText = nameText.text
+                                nameText.text += "   " + nameText.text
+                                nameTextAni.start()
+                            }
+                        }
+                    }
                 }
                 Text {
                     id: artistText
@@ -186,35 +165,21 @@ Rectangle {
                         }
                     }
 
-					HoverHandler {
-						id: hoverHandler2
+                    HoverHandler {
+                        id: hoverHandler2
 
-						onHoveredChanged: {
-							if (hoverHandler.hovered && artistText.width < artistText.contentWidth) {
-								artistTextAni.lastText = artistText.text
-								artistText.text += "   " + artistText.text
-								artistTextAni.start()
-							}
-						}
-					}
-
-					// MouseArea {
-					//     anchors.fill: parent
-					//     cursorShape: Qt.PointingHandCursor
-					//     hoverEnabled: true
-					//     onEntered: {
-					//         if(artistText.width < artistText.contentWidth) {
-					//             artistTextAni.lastText = artistText.text
-					//             artistText.text += "   " + artistText.text
-					//             artistTextAni.start()
-					//         }
-					//     }
-					// }
-
+                        onHoveredChanged: {
+                            if (hoverHandler.hovered && artistText.width < artistText.contentWidth) {
+                                artistTextAni.lastText = artistText.text
+                                artistText.text += "   " + artistText.text
+                                artistTextAni.start()
+                            }
+                        }
+                    }
                 }
             }
         }
-
+//包含音乐封面图片和歌曲信息的容器。
         Row {
             width: parent.width*.3
             anchors.centerIn: parent
@@ -229,16 +194,13 @@ Rectangle {
                 color: "#00000000"
                 iconColor: "#FF" + thisTheme.subBackgroundColor
 
-				TapHandler {
-					cursorShape: Qt.PointingHandCursor
-					onTapped: {
-						p_musicPlayer.setPlayMode()
-					}
-				}
+                TapHandler {
+                    cursorShape: Qt.PointingHandCursor
+                    onTapped: {
+                        p_musicPlayer.setPlayMode()
+                    }
+                }
 
-				// onClicked: {
-				//     p_musicPlayer.setPlayMode()
-				// }
 
                 Connections {
                     target: p_musicPlayer
@@ -269,19 +231,16 @@ Rectangle {
                 color: "#00000000"
                 iconColor: "#FF" + thisTheme.subBackgroundColor
 
-				TapHandler {
-					cursorShape: Qt.PointingHandCursor
-					onTapped: {
-						p_musicPlayer.preMusicPlay()
-					}
-				}
+                TapHandler {
+                    cursorShape: Qt.PointingHandCursor
+                    onTapped: {
+                        p_musicPlayer.preMusicPlay()
+                    }
+                }
 
-				// onClicked: {
-				//     p_musicPlayer.preMusicPlay()
-				// }
             }
             QCToolTipButton {
-				id: toolTipButton
+                id: toolTipButton
                 width: 35
                 height: width
                 source: if(p_musicPlayer.playbackState === 1) return "qrc:/Images/stop.svg"
@@ -291,36 +250,26 @@ Rectangle {
                 color: "#FF" + thisTheme.subBackgroundColor
                 iconColor: "WHITE"
 
-				TapHandler {
-					cursorShape: Qt.PointingHandCursor
-					onTapped: {
-						p_musicPlayer.playPauseMusic()
-					}
-				}
+                TapHandler {
+                    cursorShape: Qt.PointingHandCursor
+                    onTapped: {
+                        p_musicPlayer.playPauseMusic()
+                    }
+                }
 
-				// onClicked: {
-				//     p_musicPlayer.playPauseMusic()
-				// }
+                HoverHandler {
+                    id: hoverHandler1
+                    cursorShape: Qt.PointingHandCursor
+                    onHoveredChanged: {
+                        if (hoverHandler1.hovered) {
+                            toolTipButton.scale = 1.1
+                        }
+                        else {
+                            toolTipButton.scale = 1
+                        }
+                    }
+                }
 
-				HoverHandler {
-					id: hoverHandler1
-					cursorShape: Qt.PointingHandCursor
-					onHoveredChanged: {
-						if (hoverHandler1.hovered) {
-							toolTipButton.scale = 1.1
-						}
-						else {
-							toolTipButton.scale = 1
-						}
-					}
-				}
-
-				// onEntered: {
-				//     scale = 1.1
-				// }
-				// onExited: {
-				//     scale = 1
-				// }
                 Behavior on scale {
                     ScaleAnimator {
                         duration: 200
@@ -339,16 +288,12 @@ Rectangle {
                 color: "#00000000"
                 iconColor: "#FF" + thisTheme.subBackgroundColor
 
-				TapHandler {
-					cursorShape: Qt.PointingHandCursor
-					onTapped: {
-						p_musicPlayer.nextMusicPlay()
-					}
-				}
-
-				// onClicked: {
-				//     p_musicPlayer.nextMusicPlay()
-				// }
+                TapHandler {
+                    cursorShape: Qt.PointingHandCursor
+                    onTapped: {
+                        p_musicPlayer.nextMusicPlay()
+                    }
+                }
             }
 
             Component.onCompleted: {
@@ -360,7 +305,7 @@ Rectangle {
                 width = w
             }
 
-        }
+        }//播放控制按钮的容器，包括播放模式、上一首、播放/暂停、下一首按钮。
 
         Row {
             height: 35
@@ -404,16 +349,13 @@ Rectangle {
                 color: "#00000000"
                 iconColor: "#FF" + thisTheme.subBackgroundColor
 
-				TapHandler {
-					cursorShape: Qt.PointingHandCursor
-					onTapped: {
-						qcThisPlayerListLabel.visible = !qcThisPlayerListLabel.visible
-					}
-				}
+                TapHandler {
+                    cursorShape: Qt.PointingHandCursor
+                    onTapped: {
+                        qcThisPlayerListLabel.visible = !qcThisPlayerListLabel.visible
+                    }
+                }
 
-				// onClicked: {
-				//     qcThisPlayerListLabel.visible = !qcThisPlayerListLabel.visible
-				// }
             }
 
             Component.onCompleted: {
@@ -428,6 +370,7 @@ Rectangle {
                 width = w
             }
         }
-    }
+    }//显示当前播放时间、总时间、音量控制按钮和播放列表按钮。
 
 }
+

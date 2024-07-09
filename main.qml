@@ -8,13 +8,13 @@ import "./qmlPage"
 
 FramelessWindow {
     id: window
-	width: 1010
-	height: 710
+    width: 1010
+    height: 710
     minimumWidth: 1010
     minimumHeight: 710
-	color: "#2F000000"
+    color: "#2F000000"
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("")
 
     QtObject {
         id: p_theme
@@ -22,7 +22,7 @@ FramelessWindow {
         property int current: 0
         // 默认主题
         property var defaultTheme: [
-			{name:"pink",backgroundColor:"#FAF2F1",subColor:"#FAF7F6",subBackgroundColor:"FF5966",fontColor:"#572920",type:"default"}
+            {name:"pink",backgroundColor:"#FAF2F1",subColor:"#FAF7F6",subBackgroundColor:"FF5966",fontColor:"#572920",type:"default"}
         ]
 
     }
@@ -36,13 +36,14 @@ FramelessWindow {
 
     Column {
         id: mainPage
-		anchors.fill: parent
+        anchors.fill: parent
         QCTitleBar {
             id: titleBar
             width: parent.width
-			height: 80
+            height: 80
         }
 
+        //标题栏
         Rectangle {
             id: content
             width: parent.width
@@ -51,11 +52,15 @@ FramelessWindow {
             Row {
                 width: parent.width
                 height: parent.height
+
+                //左侧边栏
                 QCLeftBar {
                     id: leftBar
                     width: 180
                     height: parent.height
                 }
+
+                //右内容栏
                 QCRightContent {
                     id: rightContent
                     width: parent.width - leftBar.width
@@ -70,6 +75,7 @@ FramelessWindow {
             }
         }
 
+        //底部栏
         QCBottomBar {
             id: bottomBar
             width: parent.width

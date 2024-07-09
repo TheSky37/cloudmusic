@@ -6,15 +6,23 @@
 class FramelessWindow : public QQuickWindow
 {
     Q_OBJECT
-    Q_PROPERTY(MousePosition mouse_pos READ getMouse_pos WRITE setMouse_pos NOTIFY mouse_posChanged FINAL)
-
+    Q_PROPERTY(
+        MousePosition mouse_pos READ getMouse_pos WRITE setMouse_pos NOTIFY mouse_posChanged FINAL)
 
 public:
     enum MousePosition {
-        TOPLEFT = 1,TOP,TOPRIGHT,LEFT,RIGHT,BOTTOMLEFT,BOTTOM,BOTTOMRIGHT,NORMAL
+        TOPLEFT = 1,
+        TOP,
+        TOPRIGHT,
+        LEFT,
+        RIGHT,
+        BOTTOMLEFT,
+        BOTTOM,
+        BOTTOMRIGHT,
+        NORMAL
     };
     Q_ENUM(MousePosition);
-    FramelessWindow(QWindow * parent = nullptr);
+    FramelessWindow(QWindow* parent = nullptr);
     MousePosition getMouse_pos() const;
     void setMouse_pos(MousePosition newMouse_pos);
 
@@ -25,11 +33,11 @@ protected:
     void mousePressEvent(QMouseEvent* event);
     void mouseReleaseEvent(QMouseEvent* event);
     void mouseMoveEvent(QMouseEvent* event);
-private:
 
-    void setWindowGeometry(const QPointF &pos);
+private:
+    void setWindowGeometry(const QPointF& pos);
     void setCursorIcon();
-    MousePosition getMousePos(const QPointF &pos);
+    MousePosition getMousePos(const QPointF& pos);
 
     // 缩放边距
     int step = 8;
@@ -41,7 +49,6 @@ private:
     QPointF old_pos;
     // 旧大小
     QSize old_size;
-
 };
 
 #endif // FRAMELESSWINDOW_H

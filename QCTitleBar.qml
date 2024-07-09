@@ -8,47 +8,8 @@ Rectangle {
 	property var thisTheme: p_theme.defaultTheme[p_theme.current]
 	width: parent.width
 	height: 80
-	// color: thisTheme.backgroundColor
 	color: "#EB4141"
 
-
-	// DragHandler {
-	// 	id: pointerHandler
-	// 	property var click_pos: Qt.point(0,0)
-
-
-
-	// 	onClick_posChanged: function (mouse) {
-	// 		click_pos = Qt.point(pointerHandler.position.x,pointerHandler.position.y)
-	// 	}
-
-	// 	onParentChanged: function (mouse) {
-	// 		if(!pressed || window.mouse_pos !== FramelessWindow.NORMAL) return
-
-	// 		if(!window.startSystemMove()) { // 启用系统自带的拖拽功能
-	// 			var offset = Qt.point(pointerHandler.position.x - click_pos.x,pointerHandler.position.y - click_pos.y)
-	// 			window.x += offset.x
-	// 			window.y += offset.y
-	// 		}
-	// 	}
-	// }
-
-	// MouseArea {
-	// 	property var click_pos: Qt.point(0,0)
-	// 	anchors.fill: parent
-	// 	onPositionChanged: function (mouse) {
-	// 		if(!pressed || window.mouse_pos !== FramelessWindow.NORMAL) return
-
-	// 		if(!window.startSystemMove()) { // 启用系统自带的拖拽功能
-	// 			var offset = Qt.point(mouseX - click_pos.x,mouseY - click_pos.y)
-	// 			window.x += offset.x
-	// 			window.y += offset.y
-	// 		}
-	// 	}
-	// 	onPressedChanged: function (mouse) {
-	// 		click_pos = Qt.point(mouseX,mouseY)
-	// 	}
-	// }
 
 	TapHandler {
 		id: tapHandler
@@ -119,8 +80,6 @@ Rectangle {
 					width: 30
 					height: width
 					radius: 100
-					// color: if(isHoverd) return "#1F572920"
-					// 	   else return "#00000000"
 					color: if(isHoverd) return "#1F572920"
 						   else return "#ffffff"
 
@@ -145,20 +104,6 @@ Rectangle {
 							parent.isHoverd = hoverHandler1.hovered
 						}
 					}
-
-					// MouseArea {
-					// 	anchors.fill: parent
-					// 	hoverEnabled: true
-					// 	onClicked: {
-					// 		window.showMinimized()
-					// 	}
-					// 	onEntered: {
-					// 		parent.isHoverd = true
-					// 	}
-					// 	onExited: {
-					// 		parent.isHoverd = false
-					// 	}
-					// }
 				}
 				Rectangle {
 					id: minMaxWindowBtn
@@ -166,8 +111,6 @@ Rectangle {
 					width: 30
 					height: width
 					radius: 100
-					// color: if(isHoverd) return "#1F572920"
-					// 	   else return "#00000000"
 					color: if(isHoverd) return "#1F572920"
 						   else return "#ffffff"
 
@@ -199,24 +142,6 @@ Rectangle {
 							parent.isHoverd = hoverHandler2.hovered
 						}
 					}
-
-					// MouseArea {
-					// 	anchors.fill: parent
-					// 	hoverEnabled: true
-					// 	onClicked: {
-					// 		if(window.visibility === Window.Maximized) {
-					// 			window.showNormal()
-					// 		} else {
-					// 			window.showMaximized()
-					// 		}
-					// 	}
-					// 	onEntered: {
-					// 		parent.isHoverd = true
-					// 	}
-					// 	onExited: {
-					// 		parent.isHoverd = false
-					// 	}
-					// }
 				}
 				Rectangle {
 					id: quitWindowBtn
@@ -224,8 +149,6 @@ Rectangle {
 					width: 30
 					height: width
 					radius: 100
-					// color: if(isHoverd) return "#1F572920"
-					// 	   else return "#00000000"
 
 					color: if(isHoverd) return "#1F572920"
 						   else return "#ffffff"
@@ -261,22 +184,9 @@ Rectangle {
 							parent.isHoverd = hoverHandler3.hovered
 						}
 					}
-
-					// MouseArea {
-					// 	anchors.fill: parent
-					// 	hoverEnabled: true
-					// 	onClicked: {
-					// 		Qt.quit()
-					// 	}
-					// 	onEntered: {
-					// 		parent.isHoverd = true
-					// 	}
-					// 	onExited: {
-					// 		parent.isHoverd = false
-					// 	}
-					// }
 				}
 			}
 		}
 }
+
 
