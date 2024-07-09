@@ -27,7 +27,7 @@ qt_add_qml_module(
   QCTitleBar.qml
   QCLeftBar.qml
   RightContent.qml
-  BottomBar.qml
+  QCBottomBar.qml
   RoundImage.qml
 
   FindMusicNewMusicContent.qml
@@ -36,12 +36,18 @@ qt_add_qml_module(
 
   SOURCES framelesswindow.cpp framelesswindow.h
   QML_FILES QImage.qml
-  QML_FILES ToolTipButton.qml
+  QML_FILES QCToolTipButton.qml
   RESOURCES ImageResource.qrc
   RESOURCES
   RESOURCES
   QML_FILES PageFindMusic.qml
-  QML_FILES PageMusicPlayListDetail.qml  )
+  QML_FILES PageMusicPlayListDetail.qml
+  QML_FILES QCPlayListLable.qml
+  QML_FILES MusicResourse.qml
+  QML_FILES
+  QML_FILES PageMusicLyricDetail.qml
+  QML_FILES QCLyricListView.qml
+  QML_FILES QCMusicPlayer.qml  )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1. If
 # you are developing for iOS or macOS you should consider setting an explicit,
