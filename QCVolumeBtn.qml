@@ -69,9 +69,7 @@ Item {
             }
         }
     ]
-
-
-
+//鼠标悬停时显示音量滑块，离开时隐藏
     HoverHandler {
         id: hoverHandler1
         cursorShape: Qt.PointingHandCursor
@@ -81,7 +79,7 @@ Item {
             }
         }
     }
-
+//点击音量按钮可以在静音和恢复音量之间切换
     Rectangle {
         id: bottomBarVolumeSliderBackgournd
         width: parent.width
@@ -98,7 +96,7 @@ Item {
             font.pointSize: bottomBar.fontSize - 1
             text:  parseInt(bottomBarVolumeSlider.value*100)
             color: qcVolumeBtn.fontColor
-        }
+        }//根据状态切换高度和透明度，实现音量滑块的显示和隐藏
 
         Slider {
             id: bottomBarVolumeSlider
@@ -138,7 +136,7 @@ Item {
         }
 
     }
-
+//使用 Slider 控件调节音量，并实时更新播放器的音量
     QCToolTipButton {
         id: bottomBarVolumeBtn
         width: 35
