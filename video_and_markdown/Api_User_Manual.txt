@@ -1,0 +1,2 @@
+1.解压Api,
+2.在Api下运行node app.js
